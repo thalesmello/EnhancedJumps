@@ -290,7 +290,7 @@ function! EnhancedJumps#Jump( isNewer, filter )
 	    " of the next jump position, the jump command is executed first and
 	    " the indication only printed if the jump didn't cause an error.
 	    if s:DoJump(l:jumpCount, a:isNewer)
-		call s:EchoFollowingMessage(l:followingJump, l:jumpDirection, l:filterName, '')
+		" call s:EchoFollowingMessage(l:followingJump, l:jumpDirection, l:filterName, '')
 	    endif
 	else
 	    " The next jump would move to another buffer. Stop and notify first,
@@ -326,12 +326,12 @@ function! EnhancedJumps#Jump( isNewer, filter )
 		    \)
 		endif
 
-		call s:EchoFollowingMessage(l:followingJump, l:jumpDirection, l:filterName,
-		\   filter(
-		\	split(l:fileJumpCapture, "\n"),
-		\	'! empty(v:val)'
-		\   )
-		\)
+		" call s:EchoFollowingMessage(l:followingJump, l:jumpDirection, l:filterName,
+		" \   filter(
+		" \	split(l:fileJumpCapture, "\n"),
+		" \	'! empty(v:val)'
+		" \   )
+		" \)
 	    else
 		" Memorize the current jump command, context, target and time
 		" (except for the [count], which is stored separately) to be
