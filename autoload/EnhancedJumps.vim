@@ -273,13 +273,10 @@ function! EnhancedJumps#Jump( isNewer, filter )
 	if l:countMax == 0
 	    call ingo#msg#ErrorMsg(printf('No %s%s jump position', l:jumpDirection, l:filterName))
 	else
-	    call ingo#msg#ErrorMsg(printf('Only %d %s%s jump position%s', l:countMax, l:jumpDirection, l:filterName, (l:countMax > 1 ? 's' : '')))
+	    call ingo#msg#ErrorMsg(printf('Only %d %s%s jump position%s. Executing to latest position.', l:countMax, l:jumpDirection, l:filterName, (l:countMax > 1 ? 's' : '')))
 	endif
 
-	" We still execute the actual jump command, even though we've determined
-	" that it won't work. The jump command will still cause the customary
-	" beep.
-	call s:DoJump(l:jumpCount, a:isNewer)
+	call s:DoJump(l:countMax, a:isNewer)
     else
 	let l:target = EnhancedJumps#Common#ParseJumpLine(l:targetJump)
 	if s:IsInvalid(l:target.text)
